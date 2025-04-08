@@ -1,5 +1,5 @@
-const taskForm = document.querySelector("#task-form")
-const taskList = document.querySelector("#task-list")
+const taskForm = document.querySelector("#task-form");
+const taskList = document.querySelector("#task-list");
 
 
 function createTaskElement(task) {
@@ -49,3 +49,9 @@ taskList.addEventListener("click", (event)=>{
         deleteTask(event.target.parentElement)
     }
 })
+
+
+
+module.exports = {
+    createTaskElement
+}
