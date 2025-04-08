@@ -25,7 +25,19 @@ function createTaskElement(task) {
 }
 
 
-taskForm.addEventListener("submit", (event) => {
+function deleteTask(taskItem) {
+    taskItem.remove()
+}
+
+
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-btn")) {
+        deleteTask(event.target.parentElement)
+    }
+})
+
+
+document.addEventListener("submit", (event) => {
     event.preventDefault() // le quitamos el comportamiento por defecto del formulario
 
     const taskInput = document.querySelector("#task-input") // nos traemos el input donde se escribe la tarea
@@ -39,19 +51,7 @@ taskForm.addEventListener("submit", (event) => {
 })
 
 
-function deleteTask(taskItem){
-    taskItem.remove()
-}
-
-
-taskList.addEventListener("click", (event)=>{
-    if(event.target.classList.contains("delete-btn")){
-        deleteTask(event.target.parentElement)
-    }
-})
-
-
-
 module.exports = {
-    createTaskElement
+    createTaskElement,
+    deleteTask
 }

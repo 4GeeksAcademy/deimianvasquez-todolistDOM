@@ -1,29 +1,18 @@
-/**
- * @jest-environment jsdom
- */
+const { createTaskElement, deleteTask } = require("../src/app")
 
-const { createTaskElement } = require("../src/app.js")
+describe('createTaskElement', () => {
+    test('debería crear un elemento li con el texto de la tarea y el botón de eliminación', () => {
+        const taskText = 'Pasear al perro';
+        const taskElement = createTaskElement(taskText);
 
+        expect(taskElement.tagName).toBe('LI');
+        expect(taskElement.textContent).toContain(taskText);
 
+        const deleteButton = taskElement.querySelector('.delete-btn');
 
-describe("Valida que la función devuelva el nodo li", () => {
-    const taskText = "Pasear al perro"
-    const taskElement = createTaskElement(taskText)
-
-    test("deberia crear un nodo de html <li> con el texto de taskTest y el boton de eliminar la tarea", () => {
-        expect(taskElement.tagName).toBe('LI')
-    })
-
-
-    /*
-    <li>
-           Pasear al perro
-           <span class="delete-btn">❌</span>
-       </li>
-   
-   */
-
-})
-
-
+        expect(deleteButton).toBeTruthy();
+        expect(deleteButton.tagName).toBe('SPAN');
+        expect(deleteButton.textContent).toBe('❌');
+    });
+});
 
