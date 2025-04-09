@@ -1,4 +1,4 @@
-const { createTaskElement, deleteTask } = require("../src/app")
+const { createTaskElement} = require("../src/app")
 
 describe('createTaskElement', () => {
     test('debería crear un elemento li con el texto de la tarea y el botón de eliminación', () => {
